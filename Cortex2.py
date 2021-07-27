@@ -18,7 +18,7 @@ def main(args):
 
     # costants
     borderDistance = 25
-    ULTIMA_FASE = 4
+    LAST_STEP = 4
     top_margin = 50
     bot_margin = y_size - 50
 
@@ -51,7 +51,7 @@ def main(args):
         turret_corner = "right_top"
 
     data = args.get("data", dict())
-    FASE = args["data"].get("fase", 0)
+    STEP = args["data"].get("step", 0)
 
     if ev == "enemy-spot":
         enemy_y = args["enemy_spot"]["y"]
@@ -68,7 +68,7 @@ def main(args):
         moveDistance/=2
 
     ### SET STATUS
-    if FASE == 0:
+    if STEP == 0:
         if panel == "left" and x > borderDistance \
                 or panel == "right" and x < x_size - borderDistance:
 
@@ -76,37 +76,37 @@ def main(args):
                     or corner == "left_bottom" and isclose(ang1, 135) \
                     or corner == "right_bottom" and isclose(ang1, 45) \
                     or corner == "right_top" and isclose(ang1, 315):
-                FASE = 1
-                data.update({"fase": 1})
+                STEP = 1
+                data.update({"step": 1})
 
-    if FASE == 1:
+    if STEP == 1:
         if panel == "left" and x <= borderDistance + 1 \
                 or panel == "right" and x >= x_size - borderDistance - 1:
             if corner == "left_top" and isclose(ang1, 225) or corner == "left_bottom" and isclose(ang1,
                                                                                                   135) or corner == "right_bottom" and isclose(
                 ang1, 45) or corner == "right_top" and isclose(ang1, 315):
-                FASE = 2
-                data.update({"fase": 2})
+                STEP = 2
+                data.update({"step": 2})
 
-    if FASE == 2:
+    if STEP == 2:
         if panel == "left" and x <= borderDistance + 1 \
                 or panel == "right" and x >= x_size - borderDistance - 1:
             if isInRange(ang1, 89, 91) or isInRange(ang1, 269, 271):
-                FASE = 3
-                data.update({"fase": 3})
+                STEP = 3
+                data.update({"step": 3})
 
-    if FASE == 3:
+    if STEP == 3:
         if (panel == "left" and (isInRange(ang, 360 - 2, 360) or isInRange(ang, 0, 2))) \
                 or (panel == "right" and (isInRange(ang, 178, 182))):
-            FASE = 4
-            data.update({"fase": 4})
+            STEP = 4
+            data.update({"step": 4})
 
-    # FASE 0 ####################################################################
+    # STEP 0 ####################################################################
     ##########
 
-    if ev not in ("enemy-spot") and FASE < ULTIMA_FASE:
+    if ev not in ("enemy-spot") and STEP < LAST_STEP:
 
-        if FASE == 0:
+        if STEP == 0:
 
             ang_to_rotate, rot_dir = None, None
 
@@ -131,7 +131,7 @@ def main(args):
                 or (panel == "right" and (isInRange(ang,180-semi_angle, 180+semi_angle))):
                 res.append({"shoot": True})
 
-        if FASE == 1:
+        if STEP == 1:
 
             if panel == "left":
 
@@ -167,7 +167,7 @@ def main(args):
                 if isInRange(ang, 180 - 15, 180 + 15):
                     res.append({"shoot": True})
 
-        if FASE == 2:
+        if STEP == 2:
             r1 = getShipRotationParamsFromTargetAngle(ang1, 90)
             r2 = getShipRotationParamsFromTargetAngle(ang1, 270)
 
@@ -190,7 +190,7 @@ def main(args):
 
             data.update({"up_down": up_down})
 
-        if FASE == 3:
+        if STEP == 3:
 
             out_dict = dict()
             absTargetDegree = 0 if panel == "left" else 180
@@ -205,7 +205,7 @@ def main(args):
 
                 up_down = "down" if y < enemy_y and elapsed_time < 4 else "up"
 
-            # should never reach this point: FASE 4 before wall-collide
+            # should never reach this point: STEP 4 before wall-collide
             if ev == "wall-collide":
                 up_down = invertUpDown(up_down)
 
@@ -222,7 +222,7 @@ def main(args):
 
             res.append(out_dict)
 
-    elif ev in "enemy-spot" and FASE == 3:
+    elif ev in "enemy-spot" and STEP == 3:
 
         up_down = "down" if y < enemy_y else "up"
 
@@ -236,7 +236,7 @@ def main(args):
                      })
         res.append({dir: moveDistance/2, turretDir: degree, "shoot": True})
 
-    if FASE == 4:
+    if STEP == 4:
 
         out_dict = dict()
         absTargetDegree = 0 if panel == "left" else 180
@@ -280,13 +280,13 @@ def main(args):
 
     ### Ending Flow...
 
-    if ev == "enemy-spot" and FASE == 4:
+    if ev == "enemy-spot" and STEP == 4:
 
         sh = data.get("spotHistory", [])
         sh.append(1)
         data.update({"spotHistory": sh})
 
-    elif ev not in ("enemy-spot", "hit") and FASE == 4:
+    elif ev not in ("enemy-spot", "hit") and STEP == 4:
 
         sh = data.get("spotHistory", [])
         sh.append(0)
@@ -295,7 +295,7 @@ def main(args):
     # HISTORY CHECK
     angleH = 20
 
-    if FASE == 4 \
+    if STEP == 4 \
             and (isInRange(ang, 0, angleH) or isInRange(ang, 360 - angleH, 360) or isInRange(ang, 180 - angleH,
                                                                                              180 + angleH)):
 
