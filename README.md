@@ -1,11 +1,15 @@
 ![logo](https://user-images.githubusercontent.com/16895991/126682823-f993639d-0f96-45c0-8ced-7f1609b9278b.png)
 # FaasWars
 
+Link to join FaaSWars: https://nimbots-apigcp.nimbella.io/
+
 This is the script of **Cortex2**, the bot with which I participated and won two [Faas Wars finals in season 1](https://nimbella.com/blog/results-and-feedback-of-faas-wars-may-the-faas-be-with-you).
 
 There is also the **Cortex** script which earned second place in February.
 
 The two scripts have the same structure, they differ only slightly in the logic of some features.
+
+
 
 ## Logic & steps
 
@@ -43,3 +47,20 @@ The bot is ready for battle. The ship will decide whether to start moving up or 
 
 **It's time to take action!**
 The ship will move and fire relentlessly trying to stay aligned with the opposing ship on the y-axis.
+
+## Suggestion
+
+Each step is customizable by tuning the parameters **according to the opponents in the final**.
+
+Between the first and third final battle of the first season, the main structure of the bot has remained the same. I only adjusted secondary parameters such as the distance to the side edge and the distance to travel before stopping to shoot.
+
+
+## Conclusion
+
+I hope this small contribution will help you in developing a better bot!
+
+Good coding and enjoy!
+
+**May the Force be with you**
+
+## Link utili
