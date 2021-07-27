@@ -1,7 +1,7 @@
 ![logo](https://user-images.githubusercontent.com/16895991/126682823-f993639d-0f96-45c0-8ced-7f1609b9278b.png)
 # FaasWars
 
-Link to join FaaSWars: https://nimbots-apigcp.nimbella.io/
+Link to join **FaaS Wars**: https://nimbots-apigcp.nimbella.io/
 
 This is the script of **Cortex2**, the bot with which I participated and won two [Faas Wars finals in season 1](https://nimbella.com/blog/results-and-feedback-of-faas-wars-may-the-faas-be-with-you).
 
@@ -59,8 +59,14 @@ Between the first and third final battle of the first season, the main structure
 
 I hope this small contribution will help you in developing a better bot!
 
-Good coding and enjoy!
+Good coding and have fun!
 
 **May the Force be with you**
 
-## Link utili
+## Resources
+
+- FaaS Wars homepage: https://nimbots-apigcp.nimbella.io/
+- Season 1 - Results and feedback: https://nimbella.com/blog/results-and-feedback-of-faas-wars-may-the-faas-be-with-you
+- Tutorial: https://nimbella.com/blog/faas-wars-serverless-virtual-robot-competition
+- Final battle #1: https://www.youtube.com/watch?v=hL-4c72yFD0
+- Final battle #3: https://www.youtube.com/watch?v=H_w05jXsBh8
