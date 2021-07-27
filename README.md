@@ -1,5 +1,5 @@
 ![logo](https://user-images.githubusercontent.com/16895991/126682823-f993639d-0f96-45c0-8ced-7f1609b9278b.png)
-# FaasWars
+# Faas Wars
 
 Link to join **FaaS Wars**: https://nimbots-apigcp.nimbella.io/
 
